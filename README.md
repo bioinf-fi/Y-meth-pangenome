@@ -22,9 +22,9 @@ The analyses currently included in this repository are:
 - **Methylation calling** using `modkit`
 - **Methylation heterogeneity quantification** using `modkit`
 - **Intra-palindromic arm identity analysis**
-- **G-quadruplex (G4) annotation**
+- **G-quadruplex (G4) annotation** using nbmst and G4hunter
 - **BAM-based coverage visualization** using raaqa
-- **Palindromic structure characterization**
+- **Palindromic structure characterization** using seqrequester
 
 An additional exploratory analysis of methylation across Y chromosome architectural classes was performed but is not part of the core workflow.
 
