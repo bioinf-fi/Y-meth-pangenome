@@ -36,11 +36,11 @@ An additional exploratory analysis of methylation across Y chromosome architectu
 .
 ├── README.md
 ├── scripts/
-│   ├── methylation_calling/
-│   ├── methylation_heterogeneity/
-│   ├── palindrome_identity/
+│   ├── methylation_calling.py
+│   ├── methylation_heterogeneity.py
+│   ├── palindrome_identity.py
 │   ├── g4_annotation/
-│   └── palindrome_structure/
+│   └── palindrome_structure.py
 ├── metadata/
 ├── results/
 │   ├── methylation/
