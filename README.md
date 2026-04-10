@@ -1,6 +1,6 @@
-# Methylation Variation Across 143 Human Y Chromosomes
+# Methylation Variation Across 142 Human Y Chromosomes
 
-This repository contains the code and analysis workflow used to investigate DNA methylation patterns across 143 human Y chromosomes, with a particular focus on palindromic regions, structural architecture, and sequence-derived features.
+This repository contains the code and analysis workflow used to investigate DNA methylation patterns across 142 human Y chromosomes, with a particular focus on palindromic regions, structural architecture, and sequence-derived features.
 
 The project aims to characterize variation in methylation levels and methylation heterogeneity across different Y chromosome sequence contexts, and to relate these patterns to intra-palindromic sequence identity, local coverage profiles, and structural organization.
 
