@@ -9,7 +9,7 @@ The project aims to characterize variation in methylation levels and methylation
 ## Data used for the analysis
 
 The analysis was done using:
-- sample-specific assemblies, available here;
+- sample-specific assemblies, available [here](https://s3-us-west-2.amazonaws.com/human-pangenomics/index.html?prefix=T2T/scratch/chrY/);
 - aligned ONT data, available [...] ;
 - sample-specific sequence classes annotation, available [...] .
 
