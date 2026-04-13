@@ -36,18 +36,10 @@ An additional exploratory analysis of methylation across Y chromosome architectu
 .
 ├── README.md
 ├── scripts/
-│   ├── methylation_calling.py
-│   ├── methylation_heterogeneity.py
-│   ├── palindrome_identity.py
-│   ├── g4_annotation/
-│   └── palindrome_structure.py
+│   ├── Python_codes/
+|   │   ├── Mariateresa_codes.py
+|   │   ├── Oliver_codes.py
+│   ├── R_codes/
+|   │   ├── Mariateresa_codes.R
 ├── metadata/
 ├── results/
-│   ├── methylation/
-│   ├── heterogeneity/
-│   ├── identity/
-│   ├── g4/
-│   ├── coverage/
-│   └── structure/
-├── figures/
-└── docs/
