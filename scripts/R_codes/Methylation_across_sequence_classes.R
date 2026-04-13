@@ -34,11 +34,11 @@ library(stringr)
 
 # ------------ || DATA UPLOAD || -------------
 ## methylation score data
-#filenames = list.files(path = "Work/Data/BedGraph/BedGraph_Pille_Hallast/m_C0G", full.names = T)
+filenames = list.files(path = "Work/Data/BedGraph/BedGraph_Pille_Hallast/m_C0G", full.names = T)
 ###filenames = filenames[file.size(filenames) > 0]
 ldf = lapply(filenames,read.table)
 ## annotation
-#filenames_ann = list.files(path = "Work/annotation/seq_classes_Pille_Hallast/2026-01_final/t2tv2/", full.names = T)
+filenames_ann = list.files(path = "Work/annotation/seq_classes_Pille_Hallast/2026-01_final/t2tv2/", full.names = T)
 ldf_ann = lapply(filenames_ann,read.table)
 
 # ------------- || FILE ORGANIZATION || ---------------
