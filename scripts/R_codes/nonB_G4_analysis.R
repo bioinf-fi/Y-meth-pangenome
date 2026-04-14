@@ -197,6 +197,63 @@ ggplot(class_summary, aes(x = sequence_class, y = percentage, fill = dna_type)) 
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
+### ----- || Variation of G4s lengths across samples || -----
+# 1. Calculate mean length per individual (sample)
+gq_df = reorganized_data[["GQ"]]
+g4hunter_means <- aggregate(Length ~ Sample, data = g4hunter_df, FUN = mean)
+gq_means <- aggregate(Length ~ sample, data = gq_df, FUN = mean)
+# 2. Add a column to identify the software
+g4hunter_means$Software <- "G4Hunter"
+gq_means$Software <- "GQ"
+# 3. Combine the dataframes
+colnames(gq_means)[1] = "Sample"
+combined_df <- rbind(g4hunter_means, gq_means)
+# 4. Create the violin plot using ggplot2
+ggplot(combined_df, aes(x = Software, y = Length, fill = Software)) +
+  geom_violin(trim = FALSE, alpha = 0.7) +
+  # Use geom_jitter to see individual points without total overlap
+  geom_jitter(shape = 16, position = position_jitter(0.2), size = 1, alpha = 0.3) +
+  theme_minimal() + ylim(c(20,50)) +
+  labs(title = "Distribution of G4 Motif Lengths",
+       y = "Motif Length",
+       x = "Software") +
+  scale_fill_brewer(palette = "Set2")
+### ----- || Number of unique G4 unique motifs across samples || -----
+# 1. Calculate the number of unique sequences per individual (Sample)
+gq_unique_counts <- gq_df %>%
+  group_by(sample) %>%
+  summarize(Unique_Sequences = n_distinct(Sequence))
+# 2. Create the violin plot with jitter
+ggplot(gq_unique_counts, aes(x = "GQ", y = Unique_Sequences)) +
+  geom_violin(fill = "skyblue", alpha = 0.5, trim = FALSE) +
+  geom_jitter(width = 0.15, size = 2, alpha = 0.7, color = "darkblue") +
+  theme_minimal() +
+  labs(title = "Unique G4 Sequences per Individual (GQ)",
+       y = "Count of Unique Sequences",
+       x = "Software")
+### ----- || Number of G4s motif sequences shared across individuals || -----
+# 1. Count how many unique individuals have each sequence
+total_individuals <- n_distinct(gq_df$sample)
+sequence_sharing <- gq_df %>%
+  group_by(Sequence) %>%
+  summarize(num_samples = n_distinct(sample)) %>%
+  mutate(Category = case_when(
+    num_samples == total_individuals ~ "Shared by all",
+    num_samples >= 5 ~ "Shared by >= 5",
+    num_samples == 1 ~ "Unique",
+    TRUE ~ "Shared by 2-4"  # Catch-all for remaining sequences
+  ))
+# 2. Count sequences per category
+plot_data <- sequence_sharing %>%
+  count(Category)
+# 3. Create the stacked barplot
+ggplot(plot_data, aes(x = "GQ Software", y = n, fill = Category)) +
+  geom_bar(stat = "identity", width = 0.5) +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set1") +
+  labs(title = "Sequence Sharing Across Individuals",
+       y = "Number of Sequences",
+       x = "")
 ### ----- || Number of G4s on different sequence classes || -----
 seq_classes <- c("PAR1", "XDR", "XTR", "IR", "SAT", "CEN","DYZ17","P", "DYZ19", "HET", "PAR2")
 seq_classes_v2 <- c("PAR1", "XDR", "XTR", "IR", "SAT", "CEN","DYZ17","P1","P2","P3","P4","P5","P6","P7","P8", "DYZ19", "HET", "PAR2")
